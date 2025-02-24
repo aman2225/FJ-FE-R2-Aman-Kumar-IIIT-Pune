@@ -49,7 +49,7 @@ To get started with GoTogether, follow these steps:
   ```bash
   npm run dev
 
-5. ##Open the Application:
+##Open the Application:
    Open your browser and navigate to http://localhost:3000 to see the application in action.
 
 ##How to Use
