@@ -45,14 +45,17 @@ To get started with GoTogether, follow these steps:
    NEXT_PUBLIC_FIREBASE_APP_ID=your-firebase-app-id
    NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=your-mapbox-access-token
    NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your-stripe-publishable-key
-4.**Run the Application**:
-  ```bash
-  npm run dev
 
-##Open the Application:
+## Run the Application
+
+1. **Run the Application**:
+   ```bash
+   npm run dev
+2. **Open the Application**:
    Open your browser and navigate to http://localhost:3000 to see the application in action.
 
-##How to Use
+
+## How to Use
 1. Login/Signup: Use Firebase Authentication to log in or sign up.
 
 2. Map View: After logging in, you will be directed to the map view where you can see your current location.
