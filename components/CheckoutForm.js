@@ -48,7 +48,7 @@
 import React from 'react';
 import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
 
-export const dynamic = 'force-dynamic';
+// export const dynamic = 'force-dynamic';
 
 const CheckoutForm = ({ amount }) => {
   const stripe = useStripe();
@@ -89,7 +89,7 @@ const CheckoutForm = ({ amount }) => {
         clientSecret,
         elements,
         confirmParams: {
-          return_url: 'http://localhost:3000/', // Redirect URL after payment
+          return_url: 'https://fj-fe-r2-aman-kumar-iiit-pune.vercel.app/', // Redirect URL after payment
         },
       });
 
@@ -106,7 +106,7 @@ const CheckoutForm = ({ amount }) => {
       <h2 className='m-5 font-bold'>Amount to pay: {amount}</h2>
       <form onSubmit={handleSubmit} className='max-w-md'>
         <PaymentElement />
-        <button className='w-full bg-black text-white p-2 rounded-lg mt-2' type='submit'>
+        <button className='w-full bg-black text-white p-2 rounded-lg mt-2 cursor-pointer' type='submit'>
           Pay
         </button>
       </form>
