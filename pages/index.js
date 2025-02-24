@@ -728,7 +728,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { auth } from "../firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import Map from "./components/Map";
+import Map from "../components/Map";
 import { useTheme } from "next-themes";
 
 
@@ -776,7 +776,7 @@ export default function Home() {
       <Map />
 
       {/* Main Content */}
-      <div className="flex-1 bg-white relative text-black p-5">
+      <div className="flex-1 bg-white text-black relative  p-5">
         {/* Logo */}
         <img
           src="/i2.png" // Replace with your logo path
@@ -873,7 +873,7 @@ export default function Home() {
 
         {/* Where To Section */}
         <div
-          className="h-20 bg-gray-200 text-2xl p-4 flex items-center mt-10 cursor-pointer transform hover:scale-98 transition text-xl"
+          className="h-20 bg-gray-200 p-4 flex items-center mt-10 cursor-pointer transform hover:scale-98 transition text-xl"
           onClick={() => router.push("/search")}
         >
           <span>Where to?</span>

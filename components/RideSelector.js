@@ -689,6 +689,35 @@
 
 // export default RideSelector;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
@@ -733,8 +762,8 @@ const RideSelector = ({ pickupCoordinates, dropoffCoordinates, setSelectedVehicl
           />
         </button>
       </div>
-      <div className="flex flex-col bg-white h-1/2 border-t">
-        <h2 className="text-center py-2 text-gray text-sm">
+      <div className="flex flex-col bg-white border-t">
+        <h2 className="dark:bg-gray-700 text-center py-2 text-black text-sm">
           Choose a ride, or swipe up for more
         </h2>
         <div className="flex-1 overflow-visible">
@@ -747,14 +776,14 @@ const RideSelector = ({ pickupCoordinates, dropoffCoordinates, setSelectedVehicl
                 setAmount((rideDuration * vehicle.multiplier).toFixed(2));
               }}
             >
-              <div className="flex items-center">
+              <div className="flex items-center ">
                 <img src={vehicle.image} alt={vehicle.name} className="h-12 w-12 rounded-lg mr-4" />
                 <div>
-                  <div className="font-medium font-bold">{vehicle.name}</div>
+                  <div className="font-bold text-black dark:text-gray-700">{vehicle.name}</div>
                   <div className="text-sm text-blue-500">5 min away</div>
                 </div>
               </div>
-              <div className="font-medium mr-4">{'₹' + (rideDuration * vehicle.multiplier).toFixed(2)}</div>
+              <div className="font-medium mr-4 text-black dark:text-gray-700">{'₹' + (rideDuration * vehicle.multiplier).toFixed(2)}</div>
             </div>
           ))}
         </div>

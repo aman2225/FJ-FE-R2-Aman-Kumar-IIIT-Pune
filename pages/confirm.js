@@ -351,9 +351,9 @@
 'use client'
 
 import { useEffect, useState } from "react";
-import Map from "./components/Map";
+import Map from "@/components/Map";
 import { useRouter } from "next/router";
-import RideSelector from "./components/RideSelector";
+import RideSelector from "@/components/RideSelector";
 
 const Confirm = () => {
   const router = useRouter();
@@ -412,7 +412,7 @@ const Confirm = () => {
             setAmount={setAmount}
           />
         </div>
-        <div className="border-t-2 border-gray-300 p-4">
+        <div className="border-t-2 border-gray-300 p-4  ">
           {selectedVehicle ? (
             <div className="flex justify-center">
               <button

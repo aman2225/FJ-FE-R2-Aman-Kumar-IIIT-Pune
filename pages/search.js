@@ -725,15 +725,15 @@ const Search = () => {
     placeholder="Enter Pickup Location"
     value={pickup}
     onChange={handlePickupChange}
-    className="bg-[#1E1F29] text-gray-100 p-3 rounded-lg outline-none border-none w-full"
+    className="bg-[#1E1F29] text-gray-100 p-3 rounded-lg outline-none border-none w-full dark:bg-white"
   />
   {pickupSuggestions.length > 0 && (
-    <ul className="absolute top-full left-0 bg-white shadow-md w-full z-10">
+    <ul className="bg-black absolute top-full left-0 dark:bg-white shadow-md w-full z-10">
       {pickupSuggestions.map((suggestion, index) => (
         <li
           key={index}
           onClick={() => handleSuggestionClick("pickup", suggestion)}
-          className="cursor-pointer px-4 py-2 hover:bg-gray-100"
+          className="cursor-pointer hover:bg-gray-700 px-4 py-2 dark:hover:bg-gray-100"
         >
           {suggestion.placeName}
         </li>
@@ -741,74 +741,21 @@ const Search = () => {
     </ul>
   )}
   </div>
-          
-          {/* Pickup Input */}
-          {/* <div className="mb-3 relative">
-            <input
-              type="text"
-              placeholder="Enter pickup location"
-              value={pickup}
-              onChange={handlePickupChange}
-              className="bg-gray-200 p-2 rounded outline-none border-none w-full"
-            />
-            {pickupSuggestions.length > 0 && (
-              <ul className="absolute top-full left-0 bg-white shadow-md w-full z-10">
-                {pickupSuggestions.map((suggestion, index) => (
-                  <li
-                    key={index}
-                    onClick={() =>
-                      handleSuggestionClick("pickup", suggestion)
-                    }
-                    className="cursor-pointer px-4 py-2 hover:bg-gray-100"
-                  >
-                    {suggestion.placeName}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div> */}
-
-          {/* Dropoff Input */}
-          {/* <div className="relative">
-            <input
-              type="text"
-              placeholder="Where to?"
-              value={dropoff}
-              onChange={handleDropoffChange}
-              className="bg-gray-200 p-2 rounded outline-none border-none w-full"
-            />
-            {dropoffSuggestions.length > 0 && (
-              <ul className="absolute top-full left-0 bg-white shadow-md w-full z-10">
-                {dropoffSuggestions.map((suggestion, index) => (
-                  <li
-                    key={index}
-                    onClick={() =>
-                      handleSuggestionClick("dropoff", suggestion)
-                    }
-                    className="cursor-pointer px-4 py-2 hover:bg-gray-100"
-                  >
-                    {suggestion.placeName}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </div> */}
-        <div className="relative mt-3">
+  <div className="relative mt-3">
     <input
       type="text"
       placeholder="Enter Drop Off Location"
       value={dropoff}
       onChange={handleDropoffChange}
-      className="bg-[#1E1F29] text-gray-100 p-3 rounded-lg outline-none border-none w-full"
+      className="bg-[#1E1F29] text-gray-100 p-3 rounded-lg outline-none border-none w-full dark:bg-white"
     />
     {dropoffSuggestions.length > 0 && (
-      <ul className="absolute top-full left-0 bg-white shadow-md w-full z-10">
+      <ul className="bg-black absolute top-full left-0 dark:bg-white shadow-md w-full z-10">
         {dropoffSuggestions.map((suggestion, index) => (
           <li
             key={index}
             onClick={() => handleSuggestionClick("dropoff", suggestion)}
-            className="cursor-pointer px-4 py-2 hover:bg-gray-100"
+            className="cursor-pointer hover:bg-gray-700 px-4 py-2 dark:hover:bg-gray-100"
           >
             {suggestion.placeName}
           </li>

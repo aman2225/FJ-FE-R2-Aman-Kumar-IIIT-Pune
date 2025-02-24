@@ -48,6 +48,8 @@
 import React from 'react';
 import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
 
+export const dynamic = 'force-dynamic';
+
 const CheckoutForm = ({ amount }) => {
   const stripe = useStripe();
   const elements = useElements();
@@ -66,7 +68,6 @@ const CheckoutForm = ({ amount }) => {
     }
 
     try {
-      // Make a POST request to the API route
       const res = await fetch('/api/create-intent', {
         method: 'POST',
         headers: {

@@ -100,7 +100,7 @@ import React from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import CheckoutForm from './components/CheckoutForm';
+import CheckoutForm from '../components/CheckoutForm';
 
 function Hello() {
   const searchParams = useSearchParams();
