@@ -1,0 +1,18 @@
+ .container {
+    padding: 0 2rem;
+    height: 500vh;
+    display: flex;
+    flex-direction: column;
+    background-color: blue;
+ }
+
+ .map {
+    background-color: red;
+    flex: 1;
+    height: 500vh;
+ }
+
+ .start{
+    background-color: green;
+    flex: 1;
+ }
