@@ -35,6 +35,7 @@ To get started with GoTogether, follow these steps:
    ```bash
    npm install
 3. **Set Up Environment Variables**:
+   ```bash
    Create a .env.local file in the root directory and add the following variables:
    NEXT_PUBLIC_FIREBASE_API_KEY=your-firebase-api-key
    NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-firebase-auth-domain
@@ -47,7 +48,8 @@ To get started with GoTogether, follow these steps:
 4.**Run the Application**:
   ```bash
   npm run dev
-5. **Open the Application**:
+
+5. ##Open the Application:
    Open your browser and navigate to http://localhost:3000 to see the application in action.
 
 ##How to Use
