@@ -718,6 +718,82 @@
 
 
 
+// import React, { useEffect, useState } from 'react';
+// import { useRouter } from 'next/router';
+
+// const RideSelector = ({ pickupCoordinates, dropoffCoordinates, setSelectedVehicle, setAmount }) => {
+//   const [rideDuration, setRideDuration] = useState(0);
+//   const router = useRouter();
+
+//   const vehicles = [
+//     { name: 'Bike', image: 'https://th.bing.com/th/id/OIP.AkFFOBgsVNSfrQqAI1KjtgHaGU?rs=1&pid=ImgDetMain', multiplier: 5 },
+//     { name: 'GoX', image: 'https://th.bing.com/th/id/OIP.29ZWAnIi285Zz2XWY1gp0AHaEN?rs=1&pid=ImgDetMain', multiplier: 9 },
+//     { name: 'GoXL', image: 'https://www.suzuki.co.id/uploads/all-new-ertiga/red.png', multiplier: 14 },
+//     { name: 'GoPremium', image: 'https://purepng.com/public/uploads/large/red-edition-audi-luxury-car-jdc.png', multiplier: 20 },
+//     { name: 'Suv', image: 'https://th.bing.com/th/id/OIP.X2-oCL1gEfMChG-fHjuTowHaEg?w=290&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7', multiplier: 24 },
+//   ];
+
+//   useEffect(() => {
+//     if (pickupCoordinates && dropoffCoordinates) {
+//       fetch(
+//         `https://api.mapbox.com/directions/v5/mapbox/driving/${pickupCoordinates[0]},${pickupCoordinates[1]};${dropoffCoordinates[0]},${dropoffCoordinates[1]}?access_token=pk.eyJ1IjoiYW1hbjIyMjUiLCJhIjoiY203ZzA0Z3BlMHU3djJrc2V2c2lhdGd4ciJ9.jqojL31H4cghFWXayhsdCA`
+//       )
+//         .then((res) => res.json())
+//         .then((data) => {
+//           if (data.routes && data.routes[0]) {
+//             setRideDuration(data.routes[0].duration / 100);
+//           }
+//         })
+//         .catch((error) => console.error('Error fetching ride duration:', error));
+//     }
+//   }, [pickupCoordinates, dropoffCoordinates]);
+
+//   return (
+//     <div className="flex flex-col h-full overflow-y-scroll">
+//       <div className="absolute top-4 left-4 z-10">
+//         <button
+//           className="bg-gray-200 hover:bg-gray-300 text-black rounded-full p-2 shadow-md cursor-pointer"
+//           onClick={() => router.push('/search')}
+//         >
+//           <img
+//             src="https://img.icons8.com/ios-filled/50/000000/left.png"
+//             alt="Back"
+//             className="h-6 w-6"
+//           />
+//         </button>
+//       </div>
+//       <div className="flex flex-col bg-white border-t">
+//         <h2 className="dark:bg-gray-700 text-center py-2 text-black text-sm">
+//           Choose a ride, or swipe up for more
+//         </h2>
+//         <div className="flex-1 overflow-visible">
+//           {vehicles.map((vehicle) => (
+//             <div
+//               key={vehicle.name}
+//               className="flex items-center justify-between px-4 py-3 hover:bg-gray-100 border-b cursor-pointer"
+//               onClick={() => {
+//                 setSelectedVehicle(vehicle.name);
+//                 setAmount((rideDuration * vehicle.multiplier).toFixed(2));
+//               }}
+//             >
+//               <div className="flex items-center ">
+//                 <img src={vehicle.image} alt={vehicle.name} className="h-12 w-12 rounded-lg mr-4" />
+//                 <div>
+//                   <div className="font-bold text-black dark:text-gray-700">{vehicle.name}</div>
+//                   <div className="text-sm text-blue-500">5 min away</div>
+//                 </div>
+//               </div>
+//               <div className="font-medium mr-4 text-black dark:text-gray-700">{'₹' + (rideDuration * vehicle.multiplier).toFixed(2)}</div>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default RideSelector;
+
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
@@ -749,7 +825,7 @@ const RideSelector = ({ pickupCoordinates, dropoffCoordinates, setSelectedVehicl
   }, [pickupCoordinates, dropoffCoordinates]);
 
   return (
-    <div className="flex flex-col h-full overflow-y-scroll">
+    <div className="flex flex-col h-full overflow-y-scroll bg-white">
       <div className="absolute top-4 left-4 z-10">
         <button
           className="bg-gray-200 hover:bg-gray-300 text-black rounded-full p-2 shadow-md cursor-pointer"
@@ -763,7 +839,7 @@ const RideSelector = ({ pickupCoordinates, dropoffCoordinates, setSelectedVehicl
         </button>
       </div>
       <div className="flex flex-col bg-white border-t">
-        <h2 className="dark:bg-gray-700 text-center py-2 text-black text-sm">
+        <h2 className="text-center py-2 text-black text-sm">
           Choose a ride, or swipe up for more
         </h2>
         <div className="flex-1 overflow-visible">
@@ -776,14 +852,14 @@ const RideSelector = ({ pickupCoordinates, dropoffCoordinates, setSelectedVehicl
                 setAmount((rideDuration * vehicle.multiplier).toFixed(2));
               }}
             >
-              <div className="flex items-center ">
+              <div className="flex items-center">
                 <img src={vehicle.image} alt={vehicle.name} className="h-12 w-12 rounded-lg mr-4" />
                 <div>
-                  <div className="font-bold text-black dark:text-gray-700">{vehicle.name}</div>
+                  <div className="font-bold text-black">{vehicle.name}</div>
                   <div className="text-sm text-blue-500">5 min away</div>
                 </div>
               </div>
-              <div className="font-medium mr-4 text-black dark:text-gray-700">{'₹' + (rideDuration * vehicle.multiplier).toFixed(2)}</div>
+              <div className="font-medium mr-4 text-black">{'₹' + (rideDuration * vehicle.multiplier).toFixed(2)}</div>
             </div>
           ))}
         </div>

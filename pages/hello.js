@@ -116,6 +116,7 @@ function Hello() {
     mode: 'payment',
     amount: Math.round(amount * 100),
     currency: 'usd', // Change to 'inr' if needed
+    
   };
 
   return (

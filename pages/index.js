@@ -722,6 +722,362 @@
 //   );
 // }
 
+// import { useEffect, useState } from "react";
+// import Image from "next/image";
+// import { useRouter } from "next/router";
+// import Link from "next/link";
+// import { auth } from "../firebase";
+// import { onAuthStateChanged, signOut } from "firebase/auth";
+// import Map from "../components/Map";
+// import { useTheme } from "next-themes";
+
+
+// export default function Home() {
+//   const [user, setUser] = useState(null);
+//   const [dropdownOpen, setDropdownOpen] = useState(false);
+//   // const { theme, setTheme } = useTheme();
+//   const router = useRouter();
+
+//   // const [mounted, setMounted] = useState(false);
+
+  
+
+  
+
+//   useEffect(() => {
+//     return onAuthStateChanged(auth, (user) => {
+//       if (user) {
+//         setUser({
+//           name: user.displayName,
+//           photoUrl: user.photoURL,
+//         });
+//       } else {
+//         setUser(null);
+//         router.push("/login");
+//       }
+//     });
+//   }, [router]);
+
+//   const toggleDropdown = () => {
+//     setDropdownOpen((prev) => !prev);
+//   };
+
+//   const handleProfileManagement = () => {
+//     router.push("/profile"); // Navigate to profile management page
+//   };
+
+//   const handleSignOut = () => {
+//     signOut(auth);
+//   };
+
+//   return (
+//     <div className="flex flex-col h-screen">
+//       {/* Map Component */}
+//       <Map />
+
+//       {/* Main Content */}
+//       <div className="flex-1 bg-white text-black relative  p-5">
+//         {/* Logo */}
+//         <img
+//           src="/i2.png" // Replace with your logo path
+//           alt="Logo"
+//           className="absolute top-2 left-2 h-20 w-20"
+//         />
+
+//         <div className="flex justify-end items-center gap-4 relative">
+
+        
+
+//         </div>
+
+//         {/* User Profile Section */}
+//         <div className="flex justify-end items-center gap-4 relative">
+//           {user && (
+//             console.log(user),
+//             <>
+//               <span className="text-base font-bold">{user.name}</span>
+//               <img
+//                 src={user.photoUrl || "/default-avatar.png"} 
+//                 alt="Profile"
+//                 className="h-10 w-10 rounded-full cursor-pointer"
+//                 onClick={toggleDropdown}
+//               />
+//               {dropdownOpen && (
+//                 <div className="dropdown-menu">
+//                   <button onClick={handleProfileManagement}>
+//                     Profile Management
+//                   </button>
+//                   <button
+//                   className="w-full text-left p-2 hover:bg-gray-100"
+//                   onClick={() => router.push("/history")}
+//                 >
+//                   Ride History
+//                 </button>
+//                   <button onClick={handleSignOut}>Sign Out</button>
+//                 </div>
+//               )}
+//             </>
+//           )}
+//         </div>
+
+//         {/* Action Buttons */}
+//         <div className="flex justify-between mt-10">
+//           <Link
+//             className="flex-1 bg-gray-200 flex flex-col items-center justify-center p-5 mx-2 rounded-lg transform hover:scale-105 transition text-xl"
+//             href="/search"
+//           >
+//             <img
+//               src="https://www.pngkit.com/png/full/1-19983_new-car-png-car-png-for-picsart.png"
+//               alt="Ride"
+//               className="h-8 mb-0.5 "
+//             />
+//             <span>Cab</span>
+//           </Link>
+
+//           <Link
+//             className="flex-1 bg-gray-200 flex flex-col items-center justify-center p-5 mx-2 rounded-lg transform hover:scale-105 transition text-xl"
+//             href="/search"
+//           >
+//             <img
+//               src="https://i.pinimg.com/originals/d1/c1/78/d1c178bf08d27349f2f777bfa508b3dc.png"
+//               alt="Auto"
+//               className="h-10 mb-2"
+//             />
+//             <span>Auto</span>
+//           </Link>
+//           <Link
+//             className="flex-1 bg-gray-200 flex flex-col items-center justify-center p-5 mx-2 rounded-lg transform hover:scale-105 transition text-xl"
+//             href="/search"
+//           >
+//             <img
+//               src="https://th.bing.com/th/id/R.ba0ad73795a39fe76cb66755043c2580?rik=BBtlTVOyYrBlaQ&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f2%2fSports-Bike-PNG-Photo.png&ehk=e%2bFRQXv0xOVqke2Y0sCdeMtt24JVJbjJa3GA35G4rIM%3d&risl=&pid=ImgRaw&r=0"
+//               alt="Wheels"
+//               className="h-8 mb-2"
+//             />
+//             <span>Bike</span>
+//           </Link>
+
+//           <div className="flex-1 bg-gray-200 flex flex-col items-center justify-center p-5 mx-2 rounded-lg transform hover:scale-105 transition text-xl">
+//             <img
+//               src="https://i.ibb.co/5RjchBg/uberschedule.png"
+//               alt="Reserve"
+//               className="h-10 mb-2"
+//             />
+//             <span>Reserve</span>
+//           </div>
+//         </div>
+
+//         {/* Where To Section */}
+//         <div
+//           className="h-20 bg-gray-200 p-4 flex items-center mt-10 cursor-pointer transform hover:scale-98 transition text-xl"
+//           onClick={() => router.push("/search")}
+//         >
+//           <span>Where to?</span>
+//         </div>
+//       </div>
+
+//       {/* Dropdown CSS */}
+//       <style jsx>{`
+//         .dropdown-menu {
+//           position: absolute;
+//           top: 100%;
+//           right: 0;
+//           background-color: white;
+//           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+//           z-index: 50; /* Ensure it appears above other elements */
+//           border-radius: 0.5rem;
+//           padding: 0.5rem;
+//           width: 12rem;
+//         }
+
+//         .dropdown-menu button {
+//           width: 100%;
+//           text-align: left;
+//           padding: 0.5rem 1rem;
+//           border: none;
+//           background: none;
+//           font-size: 1rem;
+//           cursor: pointer;
+//         }
+
+//         .dropdown-menu button:hover {
+//           background-color: #f0f0f0;
+//         }
+//       `}</style>
+//     </div>
+//   );
+// }
+
+// import { useEffect, useState } from "react";
+// import Image from "next/image";
+// import { useRouter } from "next/router";
+// import Link from "next/link";
+// import { auth } from "../firebase";
+// import { onAuthStateChanged, signOut } from "firebase/auth";
+// import Map from "../components/Map";
+
+// export default function Home() {
+//   const [user, setUser] = useState(null);
+//   const [dropdownOpen, setDropdownOpen] = useState(false);
+//   const router = useRouter();
+
+//   useEffect(() => {
+//     return onAuthStateChanged(auth, (user) => {
+//       if (user) {
+//         setUser({
+//           name: user.displayName,
+//           photoUrl: user.photoURL,
+//         });
+//       } else {
+//         setUser(null);
+//         router.push("/login");
+//       }
+//     });
+//   }, [router]);
+
+//   const toggleDropdown = () => {
+//     setDropdownOpen((prev) => !prev);
+//   };
+
+//   const handleProfileManagement = () => {
+//     router.push("/profile"); // Navigate to profile management page
+//   };
+
+//   const handleSignOut = () => {
+//     signOut(auth);
+//   };
+
+//   return (
+//     <div className="flex flex-col h-screen">
+//       {/* Map Component */}
+//       <Map />
+
+//       {/* Main Content */}
+//       <div className="flex-1 bg-white relative text-black p-5">
+//         {/* Logo */}
+//         <img
+//           src="/i2.png" // Replace with your logo path
+//           alt="Logo"
+//           className="absolute top-2 left-2 h-20 w-20"
+//         />
+
+//         {/* User Profile Section */}
+//         <div className="flex justify-end items-center gap-4 relative">
+//           {user && (
+//             console.log(user),
+//             <>
+//               <span className="text-base font-bold">{user.name}</span>
+//               <img
+//                 src={user.photoUrl || "/default-avatar.png"} 
+//                 alt="Profile"
+//                 className="h-10 w-10 rounded-full cursor-pointer"
+//                 onClick={toggleDropdown}
+//               />
+//               {dropdownOpen && (
+//                 <div className="dropdown-menu">
+//                   <button onClick={handleProfileManagement}>
+//                     Profile Management
+//                   </button>
+//                   <button
+//                   className="w-full text-left p-2 hover:bg-gray-100"
+//                   onClick={() => router.push("/history")}
+//                 >
+//                   Ride History
+//                 </button>
+//                   <button onClick={handleSignOut}>Sign Out</button>
+//                 </div>
+//               )}
+//             </>
+//           )}
+//         </div>
+
+//         {/* Action Buttons */}
+//         <div className="flex justify-between mt-10">
+//           <Link
+//             className="flex-1 bg-gray-200 flex flex-col items-center justify-center p-5 mx-2 rounded-lg transform hover:scale-105 transition text-xl"
+//             href="/search"
+//           >
+//             <img
+//               src="https://www.pngkit.com/png/full/1-19983_new-car-png-car-png-for-picsart.png"
+//               alt="Ride"
+//               className="h-8 mb-0.5 "
+//             />
+//             <span>Cab</span>
+//           </Link>
+
+//           <Link
+//             className="flex-1 bg-gray-200 flex flex-col items-center justify-center p-5 mx-2 rounded-lg transform hover:scale-105 transition text-xl"
+//             href="/search"
+//           >
+//             <img
+//               src="https://i.pinimg.com/originals/d1/c1/78/d1c178bf08d27349f2f777bfa508b3dc.png"
+//               alt="Auto"
+//               className="h-10 mb-2"
+//             />
+//             <span>Auto</span>
+//           </Link>
+//           <Link
+//             className="flex-1 bg-gray-200 flex flex-col items-center justify-center p-5 mx-2 rounded-lg transform hover:scale-105 transition text-xl"
+//             href="/search"
+//           >
+//             <img
+//               src="https://th.bing.com/th/id/R.ba0ad73795a39fe76cb66755043c2580?rik=BBtlTVOyYrBlaQ&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f2%2fSports-Bike-PNG-Photo.png&ehk=e%2bFRQXv0xOVqke2Y0sCdeMtt24JVJbjJa3GA35G4rIM%3d&risl=&pid=ImgRaw&r=0"
+//               alt="Wheels"
+//               className="h-8 mb-2"
+//             />
+//             <span>Bike</span>
+//           </Link>
+
+//           <div className="flex-1 bg-gray-200 flex flex-col items-center justify-center p-5 mx-2 rounded-lg transform hover:scale-105 transition text-xl">
+//             <img
+//               src="https://i.ibb.co/5RjchBg/uberschedule.png"
+//               alt="Reserve"
+//               className="h-10 mb-2"
+//             />
+//             <span>Reserve</span>
+//           </div>
+//         </div>
+
+//         {/* Where To Section */}
+//         <div
+//           className="h-20 bg-gray-200 text-2xl p-4 flex items-center mt-10 cursor-pointer transform hover:scale-98 transition text-xl"
+//           onClick={() => router.push("/search")}
+//         >
+//           <span>Where to?</span>
+//         </div>
+//       </div>
+
+//       {/* Dropdown CSS */}
+//       <style jsx>{`
+//         .dropdown-menu {
+//           position: absolute;
+//           top: 100%;
+//           right: 0;
+//           background-color: white;
+//           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+//           z-index: 50; /* Ensure it appears above other elements */
+//           border-radius: 0.5rem;
+//           padding: 0.5rem;
+//           width: 12rem;
+//         }
+
+//         .dropdown-menu button {
+//           width: 100%;
+//           text-align: left;
+//           padding: 0.5rem 1rem;
+//           border: none;
+//           background: none;
+//           font-size: 1rem;
+//           cursor: pointer;
+//         }
+
+//         .dropdown-menu button:hover {
+//           background-color: #f0f0f0;
+//         }
+//       `}</style>
+//     </div>
+//   );
+// }
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -729,20 +1085,11 @@ import Link from "next/link";
 import { auth } from "../firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import Map from "../components/Map";
-import { useTheme } from "next-themes";
-
 
 export default function Home() {
   const [user, setUser] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  // const { theme, setTheme } = useTheme();
   const router = useRouter();
-
-  // const [mounted, setMounted] = useState(false);
-
-  
-
-  
 
   useEffect(() => {
     return onAuthStateChanged(auth, (user) => {
@@ -763,7 +1110,7 @@ export default function Home() {
   };
 
   const handleProfileManagement = () => {
-    router.push("/profile"); // Navigate to profile management page
+    router.push("/profile");
   };
 
   const handleSignOut = () => {
@@ -771,39 +1118,32 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen bg-gray-100"> {/* Updated background color */}
       {/* Map Component */}
-      <Map />
+    
+        <Map />
+      
 
       {/* Main Content */}
-      <div className="flex-1 bg-white text-black relative  p-5">
+      <div className="bg-white text-black p-4 sm:p-6"> {/* Updated padding for mobile and desktop */}
         {/* Logo */}
         <img
           src="/i2.png" // Replace with your logo path
           alt="Logo"
-          className="absolute top-2 left-2 h-20 w-20"
+          className="absolute  left-2 h-16 w-16 " // Responsive logo size
         />
 
-        <div className="flex justify-end items-center gap-4 relative">
-
-        {/* <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
-
-{theme === 'light' ? 'Dark Mode' : 'Light Mode'}
-
-</button> */}
-
-        </div>
-
         {/* User Profile Section */}
-        <div className="flex justify-end items-center gap-4 relative">
+        <div className="flex justify-end items-center gap-3 sm:gap-4 relative">
           {user && (
-            console.log(user),
             <>
-              <span className="text-base font-bold">{user.name}</span>
+              <span className="text-sm sm:text-base font-bold truncate">
+                {user.name}
+              </span>
               <img
-                src={user.photoUrl || "/default-avatar.png"} 
+                src={user.photoUrl || "/default-avatar.png"}
                 alt="Profile"
-                className="h-10 w-10 rounded-full cursor-pointer"
+                className="h-8 w-8 sm:h-10 sm:w-10 rounded-full cursor-pointer" // Responsive profile image size
                 onClick={toggleDropdown}
               />
               {dropdownOpen && (
@@ -812,11 +1152,11 @@ export default function Home() {
                     Profile Management
                   </button>
                   <button
-                  className="w-full text-left p-2 hover:bg-gray-100"
-                  onClick={() => router.push("/history")}
-                >
-                  Ride History
-                </button>
+                    className="w-full text-left p-2 hover:bg-gray-100"
+                    onClick={() => router.push("/history")}
+                  >
+                    Ride History
+                  </button>
                   <button onClick={handleSignOut}>Sign Out</button>
                 </div>
               )}
@@ -825,47 +1165,48 @@ export default function Home() {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex justify-between mt-10">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8"> {/* Responsive grid layout */}
           <Link
-            className="flex-1 bg-gray-200 flex flex-col items-center justify-center p-5 mx-2 rounded-lg transform hover:scale-105 transition text-xl"
+            className="bg-gray-200 flex flex-col items-center justify-center p-4 sm:p-6 rounded-lg transform hover:scale-105 transition text-sm sm:text-lg"
             href="/search"
           >
             <img
               src="https://www.pngkit.com/png/full/1-19983_new-car-png-car-png-for-picsart.png"
-              alt="Ride"
-              className="h-8 mb-0.5 "
+              alt="Cab"
+              className="h-6 sm:h-8 mb-1" // Responsive image size
             />
             <span>Cab</span>
           </Link>
 
           <Link
-            className="flex-1 bg-gray-200 flex flex-col items-center justify-center p-5 mx-2 rounded-lg transform hover:scale-105 transition text-xl"
+            className="bg-gray-200 flex flex-col items-center justify-center p-4 sm:p-6 rounded-lg transform hover:scale-105 transition text-sm sm:text-lg"
             href="/search"
           >
             <img
               src="https://i.pinimg.com/originals/d1/c1/78/d1c178bf08d27349f2f777bfa508b3dc.png"
               alt="Auto"
-              className="h-10 mb-2"
+              className="h-8 sm:h-10 mb-1" // Responsive image size
             />
             <span>Auto</span>
           </Link>
+
           <Link
-            className="flex-1 bg-gray-200 flex flex-col items-center justify-center p-5 mx-2 rounded-lg transform hover:scale-105 transition text-xl"
+            className="bg-gray-200 flex flex-col items-center justify-center p-4 sm:p-6 rounded-lg transform hover:scale-105 transition text-sm sm:text-lg"
             href="/search"
           >
             <img
               src="https://th.bing.com/th/id/R.ba0ad73795a39fe76cb66755043c2580?rik=BBtlTVOyYrBlaQ&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f2%2fSports-Bike-PNG-Photo.png&ehk=e%2bFRQXv0xOVqke2Y0sCdeMtt24JVJbjJa3GA35G4rIM%3d&risl=&pid=ImgRaw&r=0"
-              alt="Wheels"
-              className="h-8 mb-2"
+              alt="Bike"
+              className="h-6 sm:h-8 mb-1" // Responsive image size
             />
             <span>Bike</span>
           </Link>
 
-          <div className="flex-1 bg-gray-200 flex flex-col items-center justify-center p-5 mx-2 rounded-lg transform hover:scale-105 transition text-xl">
+          <div className="bg-gray-200 flex flex-col items-center justify-center p-4 sm:p-6 rounded-lg transform hover:scale-105 transition text-sm sm:text-lg">
             <img
               src="https://i.ibb.co/5RjchBg/uberschedule.png"
               alt="Reserve"
-              className="h-10 mb-2"
+              className="h-8 sm:h-10 mb-1" // Responsive image size
             />
             <span>Reserve</span>
           </div>
@@ -873,7 +1214,7 @@ export default function Home() {
 
         {/* Where To Section */}
         <div
-          className="h-20 bg-gray-200 p-4 flex items-center mt-10 cursor-pointer transform hover:scale-98 transition text-xl"
+          className="h-16 sm:h-20 bg-gray-200 text-lg sm:text-2xl p-4 flex items-center mt-8 cursor-pointer transform hover:scale-98 transition"
           onClick={() => router.push("/search")}
         >
           <span>Where to?</span>
@@ -888,7 +1229,7 @@ export default function Home() {
           right: 0;
           background-color: white;
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          z-index: 50; /* Ensure it appears above other elements */
+          z-index: 50;
           border-radius: 0.5rem;
           padding: 0.5rem;
           width: 12rem;
