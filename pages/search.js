@@ -728,12 +728,12 @@ const Search = () => {
     className="bg-[#1E1F29] text-gray-100 p-3 rounded-lg outline-none border-none w-full dark:bg-white"
   />
   {pickupSuggestions.length > 0 && (
-    <ul className="bg-black absolute top-full left-0 dark:bg-white shadow-md w-full z-10">
+    <ul className="bg-white absolute top-full left-0 dark:bg-white shadow-md w-full z-10">
       {pickupSuggestions.map((suggestion, index) => (
         <li
           key={index}
           onClick={() => handleSuggestionClick("pickup", suggestion)}
-          className="cursor-pointer hover:bg-gray-700 px-4 py-2 dark:hover:bg-gray-100"
+          className="cursor-pointer hover:bg-gray-400 px-4 py-2 dark:hover:bg-gray-100"
         >
           {suggestion.placeName}
         </li>
@@ -750,12 +750,12 @@ const Search = () => {
       className="bg-[#1E1F29] text-gray-100 p-3 rounded-lg outline-none border-none w-full dark:bg-white"
     />
     {dropoffSuggestions.length > 0 && (
-      <ul className="bg-black absolute top-full left-0 dark:bg-white shadow-md w-full z-10">
+      <ul className="bg-white absolute top-full left-0 dark:bg-white shadow-md w-full z-10">
         {dropoffSuggestions.map((suggestion, index) => (
           <li
             key={index}
             onClick={() => handleSuggestionClick("dropoff", suggestion)}
-            className="cursor-pointer hover:bg-gray-700 px-4 py-2 dark:hover:bg-gray-100"
+            className="cursor-pointer hover:bg-gray-400 px-4 py-2 dark:hover:bg-gray-100"
           >
             {suggestion.placeName}
           </li>
