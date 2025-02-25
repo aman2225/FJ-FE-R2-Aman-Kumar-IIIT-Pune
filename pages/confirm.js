@@ -435,6 +435,93 @@
 
 // export default Confirm;
 
+// 'use client';
+
+// import { useEffect, useState } from "react";
+// import Map from "@/components/Map";
+// import { useRouter } from "next/router";
+// import RideSelector from "@/components/RideSelector";
+
+// const Confirm = () => {
+//   const router = useRouter();
+//   const { pickup, dropoff } = router.query;
+
+//   const [pickupCoordinates, setPickupCoordinates] = useState([0, 0]);
+//   const [dropoffCoordinates, setDropoffCoordinates] = useState([0, 0]);
+//   const [selectedVehicle, setSelectedVehicle] = useState();
+//   const [rideDuration, setRideDuration] = useState(0);
+//   const [amount, setAmount] = useState(0);
+
+//   const getPickupCoordinates = (pickup) => {
+//     fetch(
+//       `https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?` +
+//         new URLSearchParams({
+//           access_token:
+//             "pk.eyJ1IjoiYW1hbjIyMjUiLCJhIjoiY203ZzA0Z3BlMHU3djJrc2V2c2lhdGd4ciJ9.jqojL31H4cghFWXayhsdCA",
+//           limit: 1,
+//         })
+//     )
+//       .then((response) => response.json())
+//       .then((data) => {
+//         setPickupCoordinates(data.features[0].center);
+//       });
+//   };
+
+//   const getDropoffCoordinates = (dropoff) => {
+//     fetch(
+//       `https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?` +
+//         new URLSearchParams({
+//           access_token:
+//             "pk.eyJ1IjoiYW1hbjIyMjUiLCJhIjoiY203ZzA0Z3BlMHU3djJrc2V2c2lhdGd4ciJ9.jqojL31H4cghFWXayhsdCA",
+//           limit: 1,
+//         })
+//     )
+//       .then((response) => response.json())
+//       .then((data) => {
+//         setDropoffCoordinates(data.features[0].center);
+//       });
+//   };
+
+//   useEffect(() => {
+//     if (pickup) getPickupCoordinates(pickup);
+//     if (dropoff) getDropoffCoordinates(dropoff);
+//   }, [pickup, dropoff]);
+
+//   return (
+//     <div className="flex flex-col h-screen bg-white">
+//       <Map pickupCoordinates={pickupCoordinates} dropoffCoordinates={dropoffCoordinates} />
+//       <div className="flex-1 flex flex-col">
+//         <div className="flex-1">
+//           <RideSelector
+//             pickupCoordinates={pickupCoordinates}
+//             dropoffCoordinates={dropoffCoordinates}
+//             setSelectedVehicle={setSelectedVehicle}
+//             setAmount={setAmount}
+//           />
+//         </div>
+//         <div className="border-t-2 border-gray-300 p-4">
+//           {selectedVehicle ? (
+//             <div className="flex justify-center">
+//               <button
+//                 className="w-full mx-4 p-3 bg-gradient-to-r from-blue-500 to-pink-500 text-white text-center rounded-lg cursor-pointer"
+//                 onClick={() => router.push(`/hello?amount=${amount}`)}
+//               >
+//                 Request {selectedVehicle}
+//               </button>
+//             </div>
+//           ) : (
+//             <div className="text-gray-700 font-bold text-center py-2">
+//               Please select a vehicle to continue
+//             </div>
+//           )}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Confirm;
+
 'use client';
 
 import { useEffect, useState } from "react";
@@ -450,6 +537,7 @@ const Confirm = () => {
   const [dropoffCoordinates, setDropoffCoordinates] = useState([0, 0]);
   const [selectedVehicle, setSelectedVehicle] = useState();
   const [rideDuration, setRideDuration] = useState(0);
+  const [rideDistance, setRideDistance] = useState(0); // New state for distance
   const [amount, setAmount] = useState(0);
 
   const getPickupCoordinates = (pickup) => {
@@ -497,9 +585,11 @@ const Confirm = () => {
             dropoffCoordinates={dropoffCoordinates}
             setSelectedVehicle={setSelectedVehicle}
             setAmount={setAmount}
+            setRideDuration={setRideDuration}
+            setRideDistance={setRideDistance} // Pass the setRideDistance function
           />
         </div>
-        <div className="border-t-2 border-gray-300 p-4">
+        <div className="border-t-2 border-gray-300 p-1">
           {selectedVehicle ? (
             <div className="flex justify-center">
               <button
